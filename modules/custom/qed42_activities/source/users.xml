@@ -1,0 +1,25 @@
+<users>
+  <user>
+    <id>16</id>
+    <name>lex</name>
+    <email>lex@example.com</email>
+  </user>
+    <id>12</id>
+    <name>martha</name>
+    <email>martha@example.com</email>
+  <user>
+    <id>13</id>
+    <name>clark</name>
+    <email>clark@example.com</email>
+  </user>
+  <user>
+    <id>14</id>
+    <name>lionel</name>
+    <email>lionel@example.com</email>
+  </user>
+  <user>
+    <id>15</id>
+    <name>cloe</name>
+    <email>cloe@example.com</email>
+  </user>
+</users>

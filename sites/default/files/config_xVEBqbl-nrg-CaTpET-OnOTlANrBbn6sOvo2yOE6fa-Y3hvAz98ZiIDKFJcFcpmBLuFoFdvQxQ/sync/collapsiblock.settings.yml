@@ -1,0 +1,9 @@
+default_state: 3
+active_pages: false
+slide_type: 1
+slide_speed: 200
+title: ':header:first'
+block: div.block
+content: div.content
+_core:
+  default_config_hash: jzCBFRLqEMoMa77Vh979MwpC8N-v1NhHSo-HAhYbBwA

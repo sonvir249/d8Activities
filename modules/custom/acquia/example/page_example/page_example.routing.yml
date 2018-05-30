@@ -1,0 +1,32 @@
+page_example_description:
+  path: '/examples/page_example'
+  defaults:
+    _controller: '\Drupal\page_example\Controller\PageExampleController::description'
+    _title: 'Page Example Page'
+  requirements:
+    _access: 'TRUE'
+
+page_example_simple:
+  path: '/examples/page_example/simple'
+  defaults:
+    _controller: '\Drupal\page_example\Controller\PageExampleController::simple'
+  requirements:
+    _permission: 'access simple page'
+
+page_example_form:
+  path: '/examples/page_example/form'
+  defaults:
+    _form: '\Drupal\page_example\Form\PageExampleForm'
+    _title: 'Demo Form'
+  requirements:
+    _permission: 'access simple page'
+
+page_example_configform:
+  path: '/examples/page_example/configform'
+  defaults:
+    _form: '\Drupal\page_example\Form\PageExampleConfigForm'
+    _title: 'Configuration Form'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE

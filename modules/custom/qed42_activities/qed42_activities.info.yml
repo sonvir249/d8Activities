@@ -1,0 +1,9 @@
+name: 'QED42 Activities'
+type: 'module'
+description: 'QED42 activities.'
+package: 'Custom'
+dependencies:
+  - migrate
+  - migrate_plus
+  - migrate_tools
+core: '8.x'

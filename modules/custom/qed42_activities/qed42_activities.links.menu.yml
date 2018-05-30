@@ -1,0 +1,11 @@
+qed42_activities.static_content:
+  title: 'Static Content'
+  description: 'Static content menu link'
+  parent: system.admin_config_system
+  route_name: qed42_activities.static_content
+
+qed42_activities.weather_config:
+  title: 'Weather Config'
+  description: 'Weather Config menu link'
+  parent: system.admin_config_system
+  route_name: qed42_activities.weather_config

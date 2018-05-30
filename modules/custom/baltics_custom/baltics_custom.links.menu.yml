@@ -1,0 +1,11 @@
+baltics_custom.settings:
+  title: Baltics
+  description: Various settings for Baltics.
+  parent: system.admin_config_system
+  route_name: baltics_custom.settings
+
+baltics_custom.basic_settings:
+  title: 'Basic settings'
+  description: 'Baltics settings'
+  parent: baltics_custom.settings
+  route_name: baltics_custom.basic_settings

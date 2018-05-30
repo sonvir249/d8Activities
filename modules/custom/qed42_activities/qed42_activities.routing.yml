@@ -1,0 +1,57 @@
+qed42_activities.static_content:
+  path: '/qed42/static-content'
+  defaults:
+    _controller: '\Drupal\qed42_activities\Controller\RoutingController::static_callback'
+  requirements:
+    _access: 'TRUE'
+#    _permission: 'access training contents'
+    _role: 'authenticated user'
+    _user_is_logged_in: 'TRUE'
+
+qed42_activities.arg_demo:
+  path: '/qed42/arg-demo/{arg}'
+  defaults:
+    _controller: '\Drupal\qed42_activities\Controller\RoutingController::arg_demo'
+    _title: 'Argument Example'
+    arg: '@arg'
+  requirements:
+    _access: 'TRUE'
+
+qed42_activities.node_list:
+  path: '/qed42/node-list/{node}'
+  defaults:
+    _controller: '\Drupal\qed42_activities\Controller\RoutingController::node_list'
+    _title: 'Node List'
+    test: 123
+  requirements:
+    _permission: 'node training contents'
+#    _custom_access_check: 'TRUE'
+    _custom_access: '\Drupal\qed42_activities\Controller\RoutingController::access'
+  options:
+    parameters:
+      node:
+        type: entity:node
+
+qed42_activities.simple_form:
+  path: '/qed42/simple-form'
+  defaults:
+    _form: '\Drupal\qed42_activities\Form\SimpleForm'
+    _title: 'Simple Form'
+  requirements:
+    _access: 'TRUE'
+
+qed42_activities.dic_form:
+  path: '/qed42/dic-form'
+  defaults:
+    _form: '\Drupal\qed42_activities\Form\DicForm'
+    _title: 'DI Form'
+  requirements:
+    _access: 'TRUE'
+
+qed42_activities.weather_config:
+  path: '/qed42/weather-config'
+  defaults:
+    _form: '\Drupal\qed42_activities\Form\WeatherConfig'
+    _title: 'Weather Config Form'
+  requirements:
+    _access: 'TRUE'

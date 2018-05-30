@@ -1,0 +1,59 @@
+uuid: d4057011-e612-4dae-bc11-741c2682006f
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: au8DLTlQ04uCnBgbSNRIW9AQZdq_tzg3FLUQQ8BBOaY
+id: migrate_source_example_xml_image
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: migrate_source_example_xml
+label: 'Image migration from xml file'
+source:
+  plugin: migrate_source_example_url_image
+  data_fetcher_plugin: file
+  data_parser_plugin: simple_xml
+  urls:
+    - source/books.xml
+  item_selector: /books/media_resources/media
+  ids:
+    image_id:
+      type: integer
+  constants:
+    source_base_path: source/images
+    destination_base_path: 'public://'
+  fields:
+    -
+      name: image_id
+      label: 'ID of the image'
+      selector: '@mid'
+    -
+      name: image_filename
+      label: 'Filename of the image'
+      selector: '@filename'
+process:
+  source_full_path:
+    -
+      plugin: concat
+      delimiter: /
+      source:
+        - constants/source_base_path
+        - image_filename
+    -
+      plugin: urlencode
+  destination_full_path:
+    plugin: concat
+    delimiter: /
+    source:
+      - constants/destination_base_path
+      - image_filename
+  uri:
+    plugin: file_copy
+    source:
+      - '@source_full_path'
+      - '@destination_full_path'
+destination:
+  plugin: 'entity:file'
+migration_dependencies: {  }

@@ -1,0 +1,148 @@
+uuid: b06768d9-0246-4e09-939c-0051dbddc544
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: zZ08uFwqvfDBcBAQcVonYK4cqcDszH6n0_mX9Bg58Ik
+id: migrate_source_example_xml_book
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: migrate_source_example_xml
+label: Books
+source:
+  plugin: migrate_source_example_url_xml
+  data_fetcher_plugin: file
+  data_parser_plugin: simple_xml
+  urls:
+    - source/books.xml
+  item_selector: /books/books/book
+  ids:
+    book_id:
+      type: integer
+  constants:
+    slash: /
+  fields:
+    -
+      name: book_id
+      label: 'ID of the book'
+      selector: bid
+    -
+      name: book_title
+      label: 'Title of the book'
+      selector: title
+    -
+      name: book_body
+      label: 'Body of the book'
+      selector: body
+    -
+      name: book_body_format
+      label: 'Format of the body'
+      selector: body_format
+    -
+      name: book_image
+      label: 'Image of the book'
+      selector: image
+    -
+      name: book_attributes
+      label: 'Authors and categories of the book'
+      selector: attributes
+    -
+      name: book_images
+      label: 'Images of the book'
+      selector: media
+    -
+      name: book_user_id
+      label: 'System creator of the book'
+      selector: user
+    -
+      name: book_created
+      label: 'Time created'
+      selector: created_on
+    -
+      name: book_alias
+      label: 'Alias of the book'
+      selector: alias
+process:
+  type:
+    plugin: default_value
+    default_value: book
+  uid:
+    plugin: migration
+    migration: migrate_source_example_xml_user
+    source: book_user_id
+  title: book_title
+  body/value: book_body
+  body/format:
+    plugin: static_map
+    source: book_body_format
+    map:
+      1: plain_text
+      2: basic_html
+  field_author:
+    -
+      plugin: explode
+      delimiter: '|'
+      source: book_attributes
+    -
+      plugin: extract
+      index:
+        - 0
+    -
+      plugin: extract_attribute_values
+      prefix: 'author:'
+      delimiter: ','
+    -
+      plugin: filter_migrated_source_values
+      migration: migrate_source_example_xml_author
+    -
+      plugin: migration
+      migration: migrate_source_example_xml_author
+  field_category:
+    -
+      plugin: explode
+      delimiter: '|'
+      source: book_attributes
+    -
+      plugin: extract
+      index:
+        - 1
+    -
+      plugin: extract_attribute_values
+      prefix: 'category:'
+      delimiter: ','
+    -
+      plugin: filter_migrated_source_values
+      migration: migrate_source_example_xml_category
+    -
+      plugin: migration
+      migration: migrate_source_example_xml_category
+  field_cover:
+    plugin: migration
+    migration: migrate_source_example_xml_image
+    source: book_images
+  created:
+    plugin: format_date
+    format: U
+    source: book_created
+  changed: '@created'
+  path:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: book_alias
+    -
+      plugin: concat
+      delimiter: null
+      source:
+        - constants/slash
+        - book_alias
+destination:
+  plugin: 'entity:node'
+migration_dependencies:
+  required:
+    - migrate_source_example_xml_user
+    - migrate_source_example_xml_author
+    - migrate_source_example_xml_category
+    - migrate_source_example_xml_image

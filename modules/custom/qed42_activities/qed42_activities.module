@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Created by PhpStorm.
+ * User: sonvir
+ * Date: 02/01/18
+ * Time: 12:55 PM.
+ */
+
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\qed42_activities\Event\NodeInsert;
+
+/**
+ * Implements hook_theme()
+ */
+function qed42_activities_theme() {
+  return [
+    'weather_block' => [
+      'variables' => [
+        'temp' => NULL,
+        'city' => NULL,
+        'pressure' => NULL,
+        'humidity' => NULL,
+        'temp_min' => NULL,
+        'temp_max' => NULL,
+        'wind_speed' => NULL,
+      ],
+      'template' => 'block-weather-custom',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_node_insert()
+ */
+function qed42_activities_node_insert(EntityInterface $entity) {
+  $event = new NodeInsert($entity);
+  $dispatcher = \Drupal::service('event_dispatcher');
+  $dispatcher->dispatch(NodeInsert::INSERT, $event);
+}

@@ -1,0 +1,5 @@
+name: 'DI Example Example'
+type: 'module'
+description: 'Di example.'
+package: 'Custom'
+core: '8.x'

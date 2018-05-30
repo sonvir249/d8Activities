@@ -1,0 +1,10 @@
+services:
+  # A service that will let us get a mood.
+  di_example.mood_ring:
+    class: Drupal\di_example\DIMoodRing
+
+# A service that will let us talk to users.
+  di_example.talk:
+    class: Drupal\di_example\DITalk
+    # We can inject the current user and mood ring services into this service.
+    arguments: ['@current_user', '@di_example.mood_ring']

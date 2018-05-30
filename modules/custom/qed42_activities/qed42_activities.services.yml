@@ -1,0 +1,18 @@
+services:
+  qed42_activities.node_list_access:
+    class: Drupal\qed42_activities\ActivitiesService
+    arguments: ['@current_user']
+    tags:
+      - {name: access_check, applies_to: _custom_access_check}
+
+  dic_form.fetchservice:
+    class: Drupal\qed42_activities\DICFormService
+    arguments: ['@database']
+
+  dic_form.eventExample:
+      class: Drupal\qed42_activities\EventSubscriber\QedEventSubscriber
+      tags:
+        - {name:'event_subscriber'}
+
+  qed42_activities.weather:
+      class: Drupal\qed42_activities\FetchWeatherData

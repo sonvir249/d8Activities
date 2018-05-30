@@ -1,0 +1,27 @@
+uuid: 5c85b9d1-85ca-4dfc-910f-a4c6170a9267
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.activity_listing.body
+    - node.type.activity_listing
+  module:
+    - text
+    - user
+id: node.activity_listing.default
+targetEntityType: node
+bundle: activity_listing
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

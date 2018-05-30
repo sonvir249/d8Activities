@@ -1,0 +1,6 @@
+di_example.conversation_mood:
+ path: '/examples/conversation/mood'
+ defaults:
+   _controller: '\Drupal\di_example\Controller\DIController::conversationAboutMood'
+ requirements:
+   _access: 'TRUE'

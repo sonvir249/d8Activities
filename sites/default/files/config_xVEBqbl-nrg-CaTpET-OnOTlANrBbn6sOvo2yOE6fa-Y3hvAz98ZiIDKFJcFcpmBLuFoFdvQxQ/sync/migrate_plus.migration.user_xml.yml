@@ -1,0 +1,59 @@
+uuid: f6c33281-8e71-4b2b-a3a2-b63230caecec
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: XxeN32aR28UyB2E-4V_NSwMaPprPf4DsPu191FDDtPE
+id: user_xml
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: default
+label: 'User XML'
+source:
+  plugin: url
+  urls: /source/users.xml
+  data_fetcher_plugin: http
+  data_parser_plugin: xml
+  item_selector: /users/user
+  ids:
+    user_id:
+      type: integer
+  fields:
+    -
+      name: id
+      label: 'User ID'
+      selector: id
+    -
+      name: name
+      label: 'User Name'
+      selector: name
+    -
+      name: email
+      label: 'User Email'
+      selector: email
+process:
+  name:
+    plugin: dedupe_entity
+    field: name
+    entity_type: user
+    source: user_name
+  roles:
+    -
+      plugin: explode
+      delimiter: ':'
+      source: user_roles
+    -
+      plugin: static_map
+      map:
+        1: administrator
+        2: editor
+  mail: email
+  init: email
+  status:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: 'entity:user'
+migration_dependencies: {  }

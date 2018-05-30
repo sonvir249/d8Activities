@@ -1,0 +1,34 @@
+<?php
+
+/**
+ * @file
+ * Contains custom code.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_alter().
+ */
+function baltics_custom_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if ($form_id == 'menu_link_content_menu_link_content_form') {
+    // Custom validation function.
+    $form['#validate'][] = 'validate_menu_title_length';
+  }
+}
+
+/**
+ * Validation form for the Menu items form.
+ *
+ * Verifies that the menu item have maximum 12 characters.
+ */
+function validate_menu_title_length($form, FormStateInterface &$form_state) {
+  $menu_title = $form_state->getValue('title');
+  $config = \Drupal::config('baltics_custom.settings');
+  $menu_title_length = $config->get('menu_title_char_length');
+
+  // Set error.
+  if (isset($menu_title[0]['value']) && strlen($menu_title[0]['value']) > $menu_title_length) {
+    $form_state->setError($form, t('Menu title lenght can not be greater than @menu_title_length.', ['@menu_title_length' => $menu_title_length]));
+  }
+}

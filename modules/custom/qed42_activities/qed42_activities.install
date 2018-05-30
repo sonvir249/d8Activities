@@ -1,0 +1,67 @@
+<?php
+
+/**
+ * @file
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function qed42_activities_schema() {
+  $schema['dic_form'] = [
+    // Specification for table "d8_demo".
+    'description' => 'The base table for nodes.',
+    'fields' => [
+      'nid' => [
+        'description' => 'The primary identifier for a node.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'fname' => [
+        'description' => 'First name of user.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'lname' => [
+        'description' => 'Last name of user.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'qualification' => [
+        'description' => 'Qualification of user.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'other' => [
+        'description' => 'Other qualification of user.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'country' => [
+        'description' => 'Country of user.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'state' => [
+        'description' => 'State of user.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+    ],
+    'primary key' => ['nid'],
+  ];
+  return $schema;
+}

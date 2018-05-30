@@ -1,0 +1,60 @@
+uuid: f3242b9d-d19a-4a6e-b000-441996bbcd66
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: A6dOzT9d-18t2viOfpR3JrPwtT_PVgbUfWBvxyL-fLY
+id: migrate_source_example_xml_category
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: migrate_source_example_xml
+label: Categories
+source:
+  plugin: migrate_source_example_url_xml
+  data_fetcher_plugin: file
+  data_parser_plugin: simple_xml
+  urls:
+    - source/attributes.xml
+  item_selector: '/book_attributes/attribute[@type="attribute_category"]'
+  ids:
+    category_id:
+      type: integer
+  constants:
+    path_prefix: category
+    slash: /
+  fields:
+    -
+      name: category_id
+      label: 'ID of the category'
+      selector: '@aid'
+    -
+      name: category_name
+      label: 'Name of the category'
+      selector: text()
+    -
+      name: category_alias
+      label: 'Alias of the category'
+      selector: '@machine_name'
+process:
+  vid:
+    plugin: default_value
+    default_value: category
+  name: category_name
+  path:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: category_alias
+    -
+      plugin: concat
+      delimiter: null
+      source:
+        - constants/slash
+        - constants/path_prefix
+        - constants/slash
+        - category_alias
+destination:
+  plugin: 'entity:taxonomy_term'
+migration_dependencies: {  }

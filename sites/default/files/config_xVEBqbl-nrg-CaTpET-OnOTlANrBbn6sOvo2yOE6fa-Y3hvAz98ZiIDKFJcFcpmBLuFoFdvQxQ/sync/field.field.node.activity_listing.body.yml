@@ -1,0 +1,22 @@
+uuid: 2fb14f93-84f3-481e-abff-356a4548d003
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.activity_listing
+  module:
+    - text
+id: node.activity_listing.body
+field_name: body
+entity_type: node
+bundle: activity_listing
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+field_type: text_with_summary

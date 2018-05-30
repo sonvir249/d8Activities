@@ -1,0 +1,10 @@
+name: sonvir
+email: sonvir.choudhary@qed42.com
+address:
+  line: 'Largo pizzeria, Viman nagar'
+  city: Pune
+  state: Maharashtra
+  zip: 411014
+_core:
+  default_config_hash: RQP6FwFA76U8KSa0kON6ufFDUrwN50CeSg3UmPxLmVg
+bio: schoudhary@qed42.com

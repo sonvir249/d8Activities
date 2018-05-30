@@ -1,0 +1,9 @@
+weather_block:
+  css:
+    theme:
+      css/custom.css: {}
+  js:
+    js/jquery.flip.min.js: {}
+    js/custom.js: {}
+  dependencies:
+    - core/jquery

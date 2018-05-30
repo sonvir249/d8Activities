@@ -1,0 +1,11 @@
+uuid: 15d203e0-b1e6-482e-bd40-215d0a79ba4d
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: epOI5hmz8fhuagmnKlUSv3_7G4QbyESdQ6VmSleuY_8
+id: lv
+label: Latvian
+direction: ltr
+weight: 1
+locked: false

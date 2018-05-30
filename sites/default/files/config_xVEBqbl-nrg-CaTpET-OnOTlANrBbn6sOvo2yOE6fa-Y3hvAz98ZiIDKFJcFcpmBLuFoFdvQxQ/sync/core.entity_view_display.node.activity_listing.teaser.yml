@@ -1,0 +1,29 @@
+uuid: ea4dda3b-9fba-46ec-b232-d7613f8e0463
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.activity_listing.body
+    - node.type.activity_listing
+  module:
+    - text
+    - user
+id: node.activity_listing.teaser
+targetEntityType: node
+bundle: activity_listing
+mode: teaser
+content:
+  body:
+    label: hidden
+    type: text_summary_or_trimmed
+    weight: 101
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

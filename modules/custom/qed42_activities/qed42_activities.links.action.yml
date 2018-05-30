@@ -1,0 +1,5 @@
+qed42_activities.arg_demo:
+  route_name: node.type_add
+  title: 'Add Node'
+  appears_on:
+    - qed42_activities.arg_demo

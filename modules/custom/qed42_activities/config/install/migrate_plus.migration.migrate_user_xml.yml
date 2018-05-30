@@ -1,0 +1,73 @@
+#id: custom_user_migration
+#label: Custom user migration
+#source:
+#  plugin: empty
+#  constants:
+#    name: johnsmith
+#    mail: johnsmith@example.com
+#    pass: '5f4dcc3b5aa765d61d8327deb882cf99'
+#    status: 1
+#process:
+#  name: constants/name
+#  mail: constants/mail
+#  pass: constants/pass
+#  status: constants/status
+#destination:
+#  plugin: entity:user
+#  md5_passwords: true
+
+#id: custom_user_migration_two
+#label: Custom user migration
+#source:
+#  plugin: empty
+#  constants:
+#    name: johnsmith
+#    mail: johnsmith@example.com
+#    plaintext: super-secret-pw
+#    status: 1
+#process:
+#  name: constants/name
+#  mail: constants/mail
+#  pass: md5hash
+#  status: constants/status
+#destination:
+#  plugin: entity:user
+#  md5_passwords: true
+
+#id: custom_user_migration_four
+#migration_tags: null
+#label: Custom user migration
+#source:
+#  urls:
+#    - source/users.xml
+#  plugin: empty
+#  ids:
+#    user_id:
+#      type: integer
+#  fields:
+#    -
+#      name: user_id
+#      label: 'ID of the user'
+#      selector: id
+#    -
+#      name: user_name
+#      label: 'Name of the user'
+#      selector: name
+#    -
+#      name: user_email
+#      label: 'Email of the user'
+#      selector: email
+#process:
+#  name:
+#    plugin: dedupe_entity
+#    field: name
+#    entity_type: user
+#    source: user_name
+#  mail: user_email
+#  init: user_email
+#  status:
+#    plugin: default_value
+#    default_value: 1
+#destination:
+#  plugin: entity:user
+#  md5_passwords: true

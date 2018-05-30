@@ -1,0 +1,5 @@
+name: Baltics
+description: 'Custom module for Baltics.'
+type: module
+core: 8.x
+package: DSU

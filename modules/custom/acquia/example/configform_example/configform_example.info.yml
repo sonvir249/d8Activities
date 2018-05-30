@@ -1,0 +1,5 @@
+name: 'Configuration Example'
+type: 'module'
+description: 'An example module showing how to define Configuration.'
+package: 'Custom'
+core: '8.x'

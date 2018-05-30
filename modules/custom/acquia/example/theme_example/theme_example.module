@@ -1,0 +1,19 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: sonvir
+ * Date: 26/12/17
+ * Time: 3:59 PM
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function theme_example_theme() {
+  $items = [
+    'my_element' => [
+      'render element' => 'element',
+    ],
+  ];
+  return $items;
+}

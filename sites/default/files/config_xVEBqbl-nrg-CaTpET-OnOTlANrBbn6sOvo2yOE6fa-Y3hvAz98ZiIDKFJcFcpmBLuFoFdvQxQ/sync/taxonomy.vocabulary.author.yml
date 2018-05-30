@@ -1,0 +1,11 @@
+uuid: 63663459-083e-48d2-94cd-aa39365045ad
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: WNSrswAf8ZRlt4gOnu-Z7JUuqA3YkkZV3ia8VDSOkxQ
+name: Author
+vid: author
+description: 'Book authors'
+hierarchy: 0
+weight: 0

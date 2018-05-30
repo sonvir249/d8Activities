@@ -1,0 +1,15 @@
+baltics_custom.settings:
+  path: '/admin/config/system/baltics'
+  defaults:
+    _title: Baltics
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+  requirements:
+    _is_administrator: 'true'
+
+baltics_custom.basic_settings:
+  path: '/admin/config/baltics/basic-settings'
+  defaults:
+    _form: '\Drupal\baltics_custom\Form\ConfigForm'
+    _title: 'Configuration Form'
+  requirements:
+    _is_administrator: 'true'

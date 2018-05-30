@@ -1,0 +1,9 @@
+{
+  "name": "drupal/qed42_activities",
+  "description": "A simple client for the Google Books API, with limited functionality for now.",
+  "type": "google-books",
+  "license": "GPL-2.0+",
+  "require": {
+    "antoineaugusti/google-books": "^0.3.0"
+  }
+}

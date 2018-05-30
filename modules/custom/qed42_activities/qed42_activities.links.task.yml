@@ -1,0 +1,9 @@
+qed42_activities.static_content:
+  route_name: qed42_activities.static_content
+  title: 'Tab 1'
+  base_route: qed42_activities.static_content
+
+qed42_activities.arg_demo:
+  route_name: qed42_activities.arg_demo
+  title: 'Tab 2'
+  base_route: qed42_activities.static_content

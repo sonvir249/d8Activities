@@ -1,0 +1,8 @@
+configform_example:
+  path: '/examples/configform-example'
+  defaults:
+    _form: '\Drupal\configform_example\Form\ConfigFormExample'
+    _title: 'Config Form Example'
+  requirements:
+    _permission: 'access simple page'
+    _access: 'TRUE'

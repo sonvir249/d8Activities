@@ -1,0 +1,17 @@
+uuid: 8f6878e2-5808-4e11-993e-b4871d00d953
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - migrate_source_example_xml
+_core:
+  default_config_hash: hX-uPKH5lDbbTdzgXYfwHqTE2L5EWADrfOYMRvfsJWo
+id: migrate_source_example_xml
+label: 'Example migration from XML files.'
+description: 'A few example migrations from XML files.'
+source_type: 'XML files'
+module: null
+shared_configuration:
+  source:
+    key: default

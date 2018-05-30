@@ -1,0 +1,58 @@
+uuid: 0588c6dc-4ae7-47c1-93b4-d97f6a784205
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: H2yeNYc-oTEy15BkohdAE7Y447wRicHDCYGljsNGMoc
+id: custom_user_migration_three
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags: null
+migration_group: null
+label: 'Custom user migration'
+source:
+  urls:
+    - source/users.xml
+  plugin: empty
+  ids:
+    user_id:
+      type: integer
+  fields:
+    -
+      name: user_id
+      label: 'ID of the user'
+      selector: id
+    -
+      name: user_name
+      label: 'Name of the user'
+      selector: name
+    -
+      name: user_email
+      label: 'Email of the user'
+      selector: email
+process:
+  name:
+    plugin: dedupe_entity
+    field: name
+    entity_type: user
+    source: user_name
+  roles:
+    -
+      plugin: explode
+      delimiter: ':'
+      source: user_roles
+    -
+      plugin: static_map
+      map:
+        1: administrator
+        2: editor
+  mail: user_email
+  init: user_email
+  status:
+    plugin: default_value
+    default_value: 1
+destination:
+  plugin: 'entity:user'
+  md5_passwords: true
+migration_dependencies: null
